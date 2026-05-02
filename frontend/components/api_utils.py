@@ -23,7 +23,53 @@ def upload_doc(file):
     try:
         files = {"file": (file.name, file.getvalue(), file.type)}
         response = requests.post(f"{BASE_URL}/upload", files=files)
-        return response.status_code == 200
+        if response.status_code != 200:
+            return {
+                "ok": False,
+                "message": f"Upload failed ({response.status_code})",
+                "data": None,
+            }
+
+        payload = response.json()
+        if payload.get("status") == "indexed":
+            return {
+                "ok": True,
+                "message": f"Indexed {payload.get('chunks', 0)} chunks",
+                "data": payload,
+            }
+
+        return {
+            "ok": False,
+            "message": payload.get("reason", "Document was not indexed"),
+            "data": payload,
+        }
     except Exception as e:
-        print(f"Upload error: {e}")
-        return False
+        return {
+            "ok": False,
+            "message": f"Upload error: {e}",
+            "data": None,
+        }
+
+
+def reset_index():
+    """Rebuilds the vector index from backend/docs."""
+    try:
+        response = requests.post(f"{BASE_URL}/admin/reset-index")
+        if response.status_code == 200:
+            payload = response.json()
+            return {
+                "ok": True,
+                "message": f"Index rebuilt. Total chunks: {payload.get('chunk_count', 0)}",
+                "data": payload,
+            }
+        return {
+            "ok": False,
+            "message": f"Reset failed ({response.status_code})",
+            "data": None,
+        }
+    except Exception as e:
+        return {
+            "ok": False,
+            "message": f"Reset error: {e}",
+            "data": None,
+        }

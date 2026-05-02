@@ -11,7 +11,7 @@ from langchain_core.prompts import MessagesPlaceholder
 # load environment variables from .env file
 load_dotenv()
 
-# Initialising the LLM
+# initialise the LLM
 llm = ChatGroq(model="openai/gpt-oss-120b", temperature=0)
 
 def get_simple_chain():
@@ -23,48 +23,50 @@ def get_simple_chain():
     chain = prompt | llm | output_parser
     return chain
 
-def get_conversational_rag_chain(vectorstore):
-    # 1. how to re-write the question to be standalone
-    contextualize_q_system_prompt = (
-        "Given a chat history and the latest user question"
-        "which might reference context in the chat history,"
-        "forumulate a standalone question which can be understood"
-        "without the chat history"
+def get_retriever(vectorstore, k: int = 5):
+    """Returns a standard similarity retriever."""
+    return vectorstore.as_retriever(
+        search_type="similarity",
+        search_kwargs={"k": k}
     )
 
-    contextualize_q_prompt= ChatPromptTemplate.from_messages([
+def get_conversational_rag_chain(vectorstore, k: int = 5):
+    
+    contextualize_q_system_prompt = (
+        "Given a chat history and the latest user question, "
+        "which might reference context in the chat history, "
+        "formulate a standalone question that can be understood "
+        "without the chat history. ALWAYS prefix the standalone question with 'query: '. "
+        "Preserve all specific terms, names, and keywords exactly as stated."
+    )
+
+    contextualize_q_prompt = ChatPromptTemplate.from_messages([
         ("system", contextualize_q_system_prompt),
         MessagesPlaceholder("chat_history"),
         ("human", "{input}"),
     ])
 
-    #2 rewrite question then search vectorstore with the standalone question
-    retriever = vectorstore.as_retriever(
-        search_type="similarity_score_threshold",
-        search_kwargs={"k": 4, "score_threshold": 0.35},
-    )
+    retriever = get_retriever(vectorstore, k)
+
     history_aware_retriever = create_history_aware_retriever(
         llm, retriever, contextualize_q_prompt
     )
 
-    # 3. combine retrieved documents with question to answer
     system_prompt = (
-        "You are a strict retrieval QA assistant. "
-        "Answer using only the retrieved context below. "
-        "Do not use outside knowledge, assumptions, or parametric memory. "
-        "If the answer is not explicitly present in the context, reply exactly: "
-        "I don't know based on the provided sources.\n\n"
+        "You are a helpful assistant that answers questions using the provided context. "
+        "Use the retrieved context as your primary source. "
+        "If the context contains relevant information, answer confidently and specifically. "
+        "Only say 'I don't know based on the provided sources' if the context contains "
+        "absolutely no information related to the question.\n\n"
         "Retrieved context:\n{context}"
     )
 
     qa_prompt = ChatPromptTemplate.from_messages([
-            ("system", system_prompt),
-            MessagesPlaceholder("chat_history"),
-            ("human", "{input}"),
-
+        ("system", system_prompt),
+        MessagesPlaceholder("chat_history"),
+        ("human", "{input}"),
     ])
 
-    # 4. orchestrate the chain(retrieval and generation)
     question_answer_chain = create_stuff_documents_chain(llm, qa_prompt)
     return create_retrieval_chain(history_aware_retriever, question_answer_chain)
 
