@@ -24,8 +24,21 @@ def create_application_logs():
             )
         """
     )
+    conn.execute(
+        """
+        CREATE TABLE IF NOT EXISTS document_metadata (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            filename TEXT,
+            chunk_size INTEGER,
+            chunk_overlap INTEGER,
+            page_count INTEGER,
+            file_size_kb REAL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+        """
+    )
+    conn.commit()
     conn.close()
-
 def insert_application_logs(session_id, user_query, gpt_response, model):
     conn = get_db_connection()
     conn.execute(
@@ -52,4 +65,17 @@ def get_chat_history(session_id):
         messages.append(HumanMessage(content=row['user_query']))
         messages.append(AIMessage(content=row['gpt_response']))
         
+        
     return messages
+
+def insert_document_metadata(filename, chunk_size, chunk_overlap, page_count, file_size_kb):
+    conn = get_db_connection()
+    conn.execute(
+        """
+        INSERT INTO document_metadata (filename, chunk_size, chunk_overlap, page_count, file_size_kb)
+        VALUES (?, ?, ?, ?, ?)
+        """,
+        (filename, chunk_size, chunk_overlap, page_count, file_size_kb)
+    )
+    conn.commit()
+    conn.close()
