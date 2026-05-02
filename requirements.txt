@@ -10,3 +10,4 @@ fastapi
 uvicorn
 streamlit
 python-dotenv
+python-multipart
