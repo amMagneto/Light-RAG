@@ -4,4 +4,7 @@ __pycache__/
 *.pyc
 .pytest_cache/
 chroma_db/
+chroma_store/
+storage/
 rag_app.db
+uvicorn_*.txt
