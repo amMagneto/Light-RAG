@@ -12,6 +12,17 @@ Ledger mapping `build_vision.md` (the original wishlist) to what actually shippe
 | Async ingestion pipeline (background indexing) | ◐ Partial | Ingestion is synchronous today, but the `DocumentStatus` lifecycle (`UPLOADED→PARSING→CHUNKING→INDEXING→READY/FAILED`) and `GET /documents/{id}/status` endpoint exist precisely so a background worker can slot in without API changes |
 | Observability — know why an answer took 4.2s | ◐ Partial | Every query persists a trace row (`retrieval_runs`): per-stage latencies, intent, attempts, verdict, candidate count, normalized query. Missing piece: an aggregate metrics dashboard |
 | ADR section signaling engineering maturity | ✅ Shipped | `docs/architecture.md` |
+| Document versioning (`v1 → v2 → v3`, "what changed?") | ✅ Shipped | `document_versions` table with supersedes chain; same filename + changed hash = new version, old chunks superseded out of retrieval; chunk-level diff endpoint `GET /documents/{id}/diff`; golden test: ISO-27001 v1 becomes unretrievable after SOC 2 v2 lands |
+| Incremental indexing (only re-embed changed chunks) | ✅ Shipped | Content-addressed vector keys (`sha256(doc:chunk_hash)`) + upsert/delete sync; verified by counting embed calls across a version bump — unchanged sections never re-embed |
+| Parent-child retrieval | ✅ Shipped | Small children retrieve, section-level parents generate: `ContextBuilder` merges siblings by section path into capped parent blocks; one citation per parent with full `chunk_ids` provenance |
+| Background ingestion jobs | ✅ Shipped | `POST /documents` → 202 + job_id; dedicated worker-loop thread processes parse/chunk/embed/index; poll `/documents/jobs/{id}`; Streamlit polls until DONE/FAILED |
+| Failure taxonomy (distinct failure modes) | ✅ Shipped | `FailureCode` enum on chat responses: `no_evidence` vs `insufficient_retrieval` vs `ambiguous_query` vs `contradictory_evidence` — each mapped to distinct downstream behavior |
+| Evidence-derived confidence (not LLM self-report) | ✅ Shipped | Confidence = claim coverage × verdict penalty × source-agreement signal, banded high/medium/low/unsupported; agreement = fraction of top-k surfaced by BOTH dense and sparse |
+| Contradiction surfacing | ✅ Shipped | `CONTRADICTORY` verdict returns structured `conflict` object with note + competing sources instead of forcing the model to pick silently |
+| Provider abstraction (LLM as interchangeable part) | ✅ Shipped | `LLMProvider` protocol (`app/reasoning/providers.py`) + factory (`groq` / `null`); planner/grader/generator/memory depend only on the protocol |
+| Trace lookup API | ✅ Shipped | `GET /traces/{run_id}` returns persisted per-stage latencies, normalized query, verdict |
+| Multi-tenancy foundations (collections) | ✅ Shipped | `collections` table; documents bind to a collection at upload (`?collection=`); default collection seeded on startup |
+| ACL-aware retrieval (filter BEFORE retrieval) | ✅ Shipped | API keys hashed at rest, scoped grants key→collections; dense pre-filters inside Chroma `$in`, sparse post-filters pre-return — unauthorized content can never reach fusion/context/generation; open/enforced dual mode with zero-breakage default. See ADR-010 |
 
 ## Deliberate deviations from the vision
 

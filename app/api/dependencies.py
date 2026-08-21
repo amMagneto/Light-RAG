@@ -9,7 +9,6 @@ from app.generation.generator import Generator
 from app.ingestion.indexer import VectorIndex
 from app.memory.service import MemoryService
 from app.reasoning.grader import EvidenceGrader
-from app.reasoning.llm import LLMClient
 from app.reasoning.planner import QueryPlanner
 from app.reasoning.verifier import AnswerVerifier
 from app.retrieval.dense import DenseRetriever
@@ -23,7 +22,7 @@ class AppContext:
     settings: Settings
     engine: AsyncEngine
     sessionmaker: async_sessionmaker[AsyncSession]
-    llm: LLMClient
+    llm: object
     index: VectorIndex
     dense: DenseRetriever
     sparse: SparseIndex = field(default_factory=SparseIndex)
@@ -32,7 +31,7 @@ class AppContext:
     grader: EvidenceGrader = field(init=False)
     generator: Generator = field(init=False)
     verifier: AnswerVerifier = field(default_factory=AnswerVerifier)
-    context_builder: ContextBuilder = field(default_factory=ContextBuilder)
+    context_builder: ContextBuilder = field(init=False)
     memory: MemoryService = field(init=False)
     retrieval: RetrievalEngine = field(init=False)
     query_service: QueryService = field(init=False)
@@ -44,7 +43,15 @@ class AppContext:
         self.generator = Generator(self.llm)
         self.memory = MemoryService(self.llm, self.index, self.settings, self.sessionmaker)
         self.retrieval = RetrievalEngine(self.settings, self.index, self.sparse, self.reranker)
+        self.context_builder = ContextBuilder(
+            parent_expansion=self.settings.parent_expansion,
+            parent_max_chars=self.settings.parent_max_chars,
+        )
         self.query_service = QueryService(self)
+
+        from app.services.job_worker import IngestionJobWorker
+
+        self.job_worker = IngestionJobWorker(self)
 
         from app.services.ingestion_service import IngestionService
 
@@ -52,13 +59,15 @@ class AppContext:
 
 
 def build_context(settings: Settings) -> AppContext:
+    from app.reasoning.providers import get_provider
+
     engine = make_engine(settings.database_url)
     index = VectorIndex(settings)
     return AppContext(
         settings=settings,
         engine=engine,
         sessionmaker=make_sessionmaker(engine),
-        llm=LLMClient(settings),
+        llm=get_provider(settings),
         index=index,
         dense=DenseRetriever(index),
     )

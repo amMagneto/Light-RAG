@@ -3,6 +3,19 @@ from enum import Enum
 from pydantic import BaseModel, Field
 
 
+class FailureCode(str, Enum):
+    """Distinct failure modes trigger distinct downstream behavior:
+    no_evidence / insufficient_retrieval → refine & re-retrieve,
+    ambiguous_query → clarify with the user, contradictory_evidence →
+    retrieve competing sources, out_of_scope → refuse."""
+    OUT_OF_SCOPE = "out_of_scope"
+    NO_EVIDENCE = "no_evidence"
+    AMBIGUOUS_QUERY = "ambiguous_query"
+    INSUFFICIENT_RETRIEVAL = "insufficient_retrieval"
+    CONTRADICTORY_EVIDENCE = "contradictory_evidence"
+    GENERATION_FAILURE = "generation_failure"
+
+
 class QueryIntent(str, Enum):
     FACTUAL = "factual"
     PROCEDURAL = "procedural"

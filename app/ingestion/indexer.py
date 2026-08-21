@@ -1,3 +1,4 @@
+import hashlib
 import threading
 
 from langchain_chroma import Chroma
@@ -6,6 +7,12 @@ from langchain_huggingface import HuggingFaceEmbeddings
 
 from app.core.config import Settings
 from app.schemas.retrieval import RetrievalCandidate
+
+
+def vector_key(document_id: str, content_hash: str | None) -> str:
+    """Content-addressed vector id: stable across re-ingests of identical text,
+    which is what makes incremental indexing possible."""
+    return hashlib.sha256(f"{document_id}:{content_hash or ''}".encode("utf-8")).hexdigest()[:32]
 
 
 class VectorIndex:
@@ -38,10 +45,17 @@ class VectorIndex:
     def memory_store(self) -> Chroma:
         return self._store(self._settings.memory_collection_name)
 
-    def add_chunks(self, rows: list[dict]) -> int:
+    def _embed_texts(self, texts: list[str]) -> list[list[float]]:
+        return self._embedding_function().embed_documents(texts)
+
+    def upsert_chunks(self, rows: list[dict]) -> int:
+        """rows require: vector_key, id (chunk db id), content, document_id,
+        document_name, chunk_index, page_start, page_end, section_path,
+        collection_id."""
         if not rows:
             return 0
         texts = [f"passage: {row['content']}" for row in rows]
+        vectors = self._embed_texts(texts)
         metadatas = [
             {
                 "chunk_id": row["id"],
@@ -51,17 +65,47 @@ class VectorIndex:
                 "page_start": row.get("page_start"),
                 "page_end": row.get("page_end"),
                 "section_path": " > ".join(row.get("section_path") or []),
+                "collection_id": row.get("collection_id"),
             }
             for row in rows
         ]
-        ids = [row["id"] for row in rows]
+        ids = [row["vector_key"] for row in rows]
         store = self.chunk_store
         with self._lock:
-            store.add_texts(texts=texts, metadatas=metadatas, ids=ids)
+            store._collection.upsert(ids=ids, embeddings=vectors, documents=texts, metadatas=metadatas)  # noqa: SLF001
         return len(rows)
 
-    def query(self, text: str, k: int) -> list[tuple[RetrievalCandidate, float]]:
-        results = self.chunk_store.similarity_search_with_score(f"query: {text}", k=k)
+    def existing_keys(self, keys: list[str]) -> set[str]:
+        if not keys:
+            return set()
+        try:
+            result = self.chunk_store._collection.get(ids=list(keys))  # noqa: SLF001
+            return set(result.get("ids") or [])
+        except Exception:
+            return set()
+
+    def delete_keys(self, keys: list[str]) -> int:
+        if not keys:
+            return 0
+        try:
+            with self._lock:
+                self.chunk_store._collection.delete(ids=list(keys))  # noqa: SLF001
+            return len(keys)
+        except Exception:
+            return 0
+
+    def query(
+        self,
+        text: str,
+        k: int,
+        allowed_collection_ids: list[str] | None = None,
+    ) -> list[tuple[RetrievalCandidate, float]]:
+        where: dict | None = None
+        if allowed_collection_ids is not None:
+            if not allowed_collection_ids:
+                return []
+            where = {"collection_id": {"$in": list(allowed_collection_ids)}}
+        results = self.chunk_store.similarity_search_with_score(f"query: {text}", k=k, filter=where)
         candidates: list[tuple[RetrievalCandidate, float]] = []
         for document, distance in results:
             meta = document.metadata or {}

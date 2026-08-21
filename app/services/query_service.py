@@ -7,12 +7,17 @@ from app.db.repositories import ChunkRepository, SessionRepository, TraceReposit
 from app.ingestion.indexer import VectorIndex
 
 
-def sparse_documents(rows: list[tuple[object, str]]) -> list[dict]:
+def sparse_documents(rows: list[tuple[object, str, str | None]]) -> list[dict]:
     grouped: dict[str, dict] = {}
-    for chunk, filename in rows:
+    for chunk, filename, collection_id in rows:
         doc = grouped.setdefault(
             chunk.document_id,
-            {"document_id": chunk.document_id, "document_name": filename, "chunks": []},
+            {
+                "document_id": chunk.document_id,
+                "document_name": filename,
+                "collection_id": collection_id,
+                "chunks": [],
+            },
         )
         doc["chunks"].append(
             {
@@ -40,12 +45,19 @@ class RetrievalEngine:
         self._sparse = sparse
         self._reranker = reranker
 
-    async def retrieve(self, query: str, top_k: int | None = None):
+    async def retrieve(self, query: str, top_k: int | None = None, allowed_collection_ids: list[str] | None = None):
+        """Returns (fused, reranked, signals). ACL scoping happens BEFORE
+        retrieval: dense filters inside Chroma via metadata $in; sparse
+        post-filters before returning. signals carries source agreement."""
         import asyncio
 
         top_k = top_k or self._settings.rerank_top_k
-        dense_task = asyncio.to_thread(self._index.query, query, self._settings.dense_top_k)
-        sparse_task = asyncio.to_thread(self._sparse.search, query, self._settings.sparse_top_k)
+        dense_task = asyncio.to_thread(
+            self._index.query, query, self._settings.dense_top_k, allowed_collection_ids
+        )
+        sparse_task = asyncio.to_thread(
+            self._sparse.search, query, self._settings.sparse_top_k, allowed_collection_ids
+        )
         dense_hits, sparse_candidates = await asyncio.gather(dense_task, sparse_task)
 
         from app.retrieval.fusion import rrf_fuse
@@ -59,7 +71,15 @@ class RetrievalEngine:
             limit=self._settings.candidate_pool,
         )
         reranked = self._reranker.rerank(query, fused, top_k=top_k)
-        return fused, reranked
+
+        dense_ids = {candidate.chunk_id for candidate, _ in dense_hits}
+        sparse_ids = {candidate.chunk_id for candidate in sparse_candidates}
+        if dense_ids and sparse_ids:
+            both = sum(1 for c in reranked if c.chunk_id in dense_ids and c.chunk_id in sparse_ids)
+            agreement = round(both / len(reranked), 4) if reranked else 0.0
+        else:
+            agreement = 0.5
+        return fused, reranked, {"agreement": agreement}
 
 
 class QueryService:
@@ -67,7 +87,13 @@ class QueryService:
         self._ctx = ctx
         self._settings: Settings = ctx.settings
 
-    async def execute_search(self, request):
+    @staticmethod
+    def _scope(identity) -> list[str] | None:
+        from app.api.auth import collection_filter
+
+        return collection_filter(identity) if identity is not None else None
+
+    async def execute_search(self, request, identity=None):
         from app.schemas.responses import SearchResponse, TraceInfo
         from app.schemas.retrieval import RetrievalResult
 
@@ -89,7 +115,7 @@ class QueryService:
         stages["planning"] = (time.perf_counter() - stage_start) * 1000
 
         stage_start = time.perf_counter()
-        fused, reranked = await self._ctx.retrieval.retrieve(plan.normalized_query, request.top_k)
+        fused, reranked, signals = await self._ctx.retrieval.retrieve(plan.normalized_query, request.top_k, self._scope(identity))
         stages["retrieval"] = (time.perf_counter() - stage_start) * 1000
 
         attempts = 1
@@ -104,7 +130,7 @@ class QueryService:
             if rewrite.rewritten_query.strip() == plan.normalized_query.strip():
                 break
             plan.normalized_query = rewrite.rewritten_query
-            fused, reranked = await self._ctx.retrieval.retrieve(rewrite.rewritten_query, request.top_k)
+            fused, reranked, signals = await self._ctx.retrieval.retrieve(rewrite.rewritten_query, request.top_k, self._scope(identity))
             assessment = await self._ctx.grader.grade(rewrite.rewritten_query, reranked)
             attempts += 1
         stages["grading"] = (time.perf_counter() - stage_start) * 1000
@@ -144,7 +170,7 @@ class QueryService:
             ),
         )
 
-    async def execute_chat(self, request):
+    async def execute_chat(self, request, identity=None):
         from app.core.exceptions import LLMError
         from app.schemas.generation import Citation
         from app.schemas.responses import ChatResponse, SourceRef, TraceInfo
@@ -174,14 +200,14 @@ class QueryService:
 
         attempts = 1
         stage_start = time.perf_counter()
-        fused, reranked = await self._ctx.retrieval.retrieve(plan.normalized_query, request.top_k)
+        fused, reranked, signals = await self._ctx.retrieval.retrieve(plan.normalized_query, request.top_k, self._scope(identity))
         assessment = await self._ctx.grader.grade(plan.normalized_query, reranked)
         while assessment.verdict.value != "sufficient" and attempts <= self._settings.max_refinement_attempts:
             rewrite = await self._ctx.planner.rewrite(plan, assessment.rationale)
             if rewrite.rewritten_query.strip() == plan.normalized_query.strip():
                 break
             plan.normalized_query = rewrite.rewritten_query
-            fused, reranked = await self._ctx.retrieval.retrieve(rewrite.rewritten_query, request.top_k)
+            fused, reranked, signals = await self._ctx.retrieval.retrieve(rewrite.rewritten_query, request.top_k, self._scope(identity))
             assessment = await self._ctx.grader.grade(rewrite.rewritten_query, reranked)
             attempts += 1
         stages["retrieval_grading"] = (time.perf_counter() - stage_start) * 1000
@@ -195,10 +221,25 @@ class QueryService:
         stages["generation"] = (time.perf_counter() - stage_start) * 1000
 
         stage_start = time.perf_counter()
-        verified, confidence = self._ctx.verifier.verify(generated, citations, assessment.verdict)
+        verified, confidence, band = self._ctx.verifier.verify(
+            generated, citations, assessment.verdict, agreement=signals.get("agreement", 1.0)
+        )
         cited = self._ctx.verifier.filter_citations_for_claims(citations, verified.claims)
         stages["verification"] = (time.perf_counter() - stage_start) * 1000
         stages["total"] = (time.perf_counter() - started) * 1000
+
+        failure_code = None
+        conflict = None
+        from app.schemas.retrieval import RetrievalVerdict
+
+        if assessment.verdict.value != "sufficient":
+            from app.reasoning.verifier import derive_failure_code
+
+            failure_code = derive_failure_code(assessment.verdict, len(reranked))
+        if assessment.verdict is RetrievalVerdict.CONTRADICTORY:
+            from app.schemas.responses import ConflictInfo
+
+            conflict = ConflictInfo(detected=True, note=assessment.rationale, sources=cited)
 
         async with self._ctx.sessionmaker() as session:
             sessions = SessionRepository(session)
@@ -237,6 +278,9 @@ class QueryService:
             citations=[c.model_copy(deep=True) for c in cited],
             claims=verified.claims,
             confidence=confidence,
+            confidence_band=band,
+            failure_code=failure_code,
+            conflict=conflict,
             uncertainty=verified.uncertainty,
             trace=TraceInfo(
                 run_id=trace.id,

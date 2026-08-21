@@ -57,3 +57,32 @@ async def get_session(request: Request, session_id: str) -> SessionOut:
             for row in rows
         ],
     )
+
+
+@router.get("/traces/{run_id}")
+async def get_trace(request: Request, run_id: str):
+    from fastapi.responses import JSONResponse
+
+    from app.db.repositories import TraceRepository
+
+    ctx = request.app.state.ctx
+    async with ctx.sessionmaker() as session:
+        row = await TraceRepository(session).get(run_id)
+    if row is None:
+        raise HTTPException(status_code=404, detail=f"Trace {run_id} not found")
+    return JSONResponse(
+        {
+            "run_id": row.id,
+            "session_id": row.session_id,
+            "query": row.query,
+            "normalized_query": row.normalized_query,
+            "intent": row.intent,
+            "attempts": row.attempts,
+            "verdict": row.verdict,
+            "stages_ms": row.stages_json or {},
+            "candidate_count": row.candidate_count,
+            "confidence": row.confidence,
+            "model": row.model,
+            "created_at": row.created_at.isoformat() if row.created_at else None,
+        }
+    )

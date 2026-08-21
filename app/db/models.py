@@ -1,7 +1,7 @@
 import uuid
 from datetime import datetime, timezone
 
-from sqlalchemy import JSON, DateTime, Float, ForeignKey, Index, Integer, String, Text
+from sqlalchemy import JSON, Boolean, DateTime, Float, ForeignKey, Index, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.engine import Base
@@ -48,9 +48,22 @@ class DocumentModel(Base):
     chunk_overlap_used: Mapped[int | None] = mapped_column(Integer, default=None)
     content_hash: Mapped[str | None] = mapped_column(String(64), default=None)
     storage_path: Mapped[str | None] = mapped_column(String(1024), default=None)
+    collection_id: Mapped[str | None] = mapped_column(String(36), default=None, index=True)
     error: Mapped[str | None] = mapped_column(Text, default=None)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, onupdate=utcnow)
+
+
+class DocumentVersionModel(Base):
+    __tablename__ = "document_versions"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    document_id: Mapped[str] = mapped_column(ForeignKey("documents.id"), index=True)
+    version: Mapped[int] = mapped_column(Integer, default=1)
+    content_hash: Mapped[str | None] = mapped_column(String(64), default=None)
+    supersedes_id: Mapped[str | None] = mapped_column(String(36), default=None)
+    chunk_count: Mapped[int] = mapped_column(Integer, default=0)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
 
 class ChunkModel(Base):
@@ -65,7 +78,9 @@ class ChunkModel(Base):
     section_path_json: Mapped[list | None] = mapped_column(JSON, default=list)
     token_count: Mapped[int] = mapped_column(Integer, default=0)
     embedding_model: Mapped[str | None] = mapped_column(String(128), default=None)
-    content_hash: Mapped[str | None] = mapped_column(String(64), default=None)
+    content_hash: Mapped[str | None] = mapped_column(String(64), default=None, index=True)
+    version_id: Mapped[str | None] = mapped_column(String(36), default=None)
+    is_current: Mapped[bool] = mapped_column(Boolean, default=True)
 
     @property
     def section_path(self) -> list[str]:
@@ -73,6 +88,45 @@ class ChunkModel(Base):
 
 
 Index("ix_chunks_document_index", ChunkModel.document_id, ChunkModel.chunk_index)
+
+
+class CollectionModel(Base):
+    __tablename__ = "collections"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    name: Mapped[str] = mapped_column(String(128), unique=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class ApiKeyModel(Base):
+    __tablename__ = "api_keys"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    name: Mapped[str] = mapped_column(String(128))
+    key_hash: Mapped[str] = mapped_column(String(64), unique=True)
+    is_admin: Mapped[bool] = mapped_column(Boolean, default=False)
+    revoked: Mapped[bool] = mapped_column(Boolean, default=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class CollectionGrantModel(Base):
+    __tablename__ = "collection_grants"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    api_key_id: Mapped[str] = mapped_column(ForeignKey("api_keys.id"), index=True)
+    collection_id: Mapped[str] = mapped_column(ForeignKey("collections.id"), index=True)
+
+
+class IngestionJobModel(Base):
+    __tablename__ = "ingestion_jobs"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    filename: Mapped[str] = mapped_column(String(512))
+    status: Mapped[str] = mapped_column(String(16), default="QUEUED", index=True)
+    document_id: Mapped[str | None] = mapped_column(String(36), default=None)
+    error: Mapped[str | None] = mapped_column(Text, default=None)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, onupdate=utcnow)
 
 
 class RetrievalRunModel(Base):

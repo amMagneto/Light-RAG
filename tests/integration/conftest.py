@@ -53,4 +53,23 @@ def make_ctx(tmp_path):
     )
 
 
-__all__ = ["DummyEmbeddings", "make_ctx", "AsyncSession", "async_sessionmaker"]
+__all__ = ["DummyEmbeddings", "make_ctx", "upload_and_wait"]
+
+
+def upload_and_wait(client, ctx, name: str, payload: bytes, mime: str = "text/markdown", collection: str | None = None, headers: dict | None = None) -> dict:
+    """POST the file (expect 202 + job), block on the worker, return final job dict."""
+    kwargs: dict = {"files": {"file": (name, payload, mime)}}
+    if collection:
+        kwargs["data"] = {"collection": collection}
+    if headers:
+        kwargs["headers"] = headers
+    response = client.post("/api/v1/documents", **kwargs)
+    assert response.status_code == 202, response.text
+    job_id = response.json()["job_id"]
+    row = ctx.job_worker.wait_for(job_id)
+    assert row is not None and row.status == "DONE", f"job failed: {row.error if row else 'missing'}"
+    return {
+        "job_id": job_id,
+        "document_id": row.document_id,
+        "status": "READY",
+    }

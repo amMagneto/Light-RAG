@@ -37,3 +37,29 @@ class UploadResponse(BaseModel):
     chunk_count: int = 0
     page_count: int | None = None
     duplicate: bool = False
+    version: int = 1
+    chunks_embedded: int = 0
+    chunks_reused: int = 0
+
+
+class JobResponse(BaseModel):
+    job_id: str
+    filename: str
+    status: str
+    document_id: str | None = None
+    error: str | None = None
+
+
+class VersionInfo(BaseModel):
+    version: int
+    content_hash: str | None = None
+    chunk_count: int = 0
+
+
+class VersionDiff(BaseModel):
+    document_id: str
+    from_version: int
+    to_version: int
+    added: list[dict] = Field(default_factory=list)
+    removed: list[dict] = Field(default_factory=list)
+    unchanged: int = 0
