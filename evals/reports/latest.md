@@ -1,6 +1,6 @@
 # Retrieval Evaluation Report
 
-Generated: `2026-08-21T17:21:42.450086` | questions: 27 | corpus chunks: 16 | k_max: 8
+Generated: `2026-08-21T20:15:13.648086` | questions: 27 | corpus chunks: 16 | k_max: 8
 
 ## Methodology
 
@@ -51,9 +51,9 @@ Generated: `2026-08-21T17:21:42.450086` | questions: 27 | corpus chunks: 16 | k_
 |---|---:|
 | context dedup ratio (kept / input chunks) | 100.0% |
 | relevant fraction of final packed context | 11.6% |
-| dense search (e5 embed + chroma, avg) | 135 ms |
-| sparse search (BM25, avg) | 1.0 ms |
-| RRF fusion + rerank (avg) | 0.9 ms |
+| dense search (e5 embed + chroma, avg) | 163 ms |
+| sparse search (BM25, avg) | 1.1 ms |
+| RRF fusion + rerank (avg) | 1.0 ms |
 
 ## Hypothesis verification
 

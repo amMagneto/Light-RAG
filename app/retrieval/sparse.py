@@ -31,7 +31,7 @@ class SparseIndex:
         return tuple(len(r["chunks"]) for r in rows)
 
     def refresh(self, documents: list[dict]) -> None:
-        """documents: [{document_id, document_name, chunks: [row dicts with id/content/...]}]"""
+        """documents: [{document_id, document_name, collection_id, chunks: [row dicts]}]"""
         flat: list[dict] = []
         for doc in documents:
             for chunk in doc["chunks"]:
@@ -40,6 +40,7 @@ class SparseIndex:
                         "chunk_id": chunk["id"],
                         "document_id": doc["document_id"],
                         "document_name": doc["document_name"],
+                        "collection_id": doc.get("collection_id"),
                         "content": chunk["content"],
                         "chunk_index": chunk.get("chunk_index", 0),
                         "page_start": chunk.get("page_start"),
@@ -57,12 +58,27 @@ class SparseIndex:
     def needs_refresh(self, signature: tuple[int, ...]) -> bool:
         return signature != self._size_signature
 
-    def search(self, query: str, k: int) -> list[RetrievalCandidate]:
+    def search(
+        self,
+        query: str,
+        k: int,
+        allowed_collection_ids: list[str] | None = None,
+    ) -> list[RetrievalCandidate]:
+        """Post-filters by collection before returning. Unauthorized CONTENT can
+        never leak; the tradeoff is rank-budget dilution (BM25 scores over the
+        full corpus, then filtered) — dense leg does true pre-filtering."""
         with self._lock:
             bm25 = self._bm25
             rows = list(self._rows)
         if bm25 is None or not rows:
             return []
+        if allowed_collection_ids is not None:
+            allowed = set(allowed_collection_ids)
+            if not allowed:
+                return []
+            rows = [row for row in rows if row.get("collection_id") in allowed]
+            if not rows:
+                return []
         terms = [token for token in tokenize(query) if token not in _stopwords()]
         if not terms:
             terms = tokenize(query)

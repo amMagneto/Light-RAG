@@ -35,28 +35,46 @@ def search(query, top_k=8):
     return None
 
 
-def upload_doc(file):
-    """Uploads a document; the backend parses, chunks, embeds and indexes it."""
+def upload_doc(file, timeout_seconds: int = 300):
+    """Uploads a document; backend returns 202 with a job_id, ingestion runs in
+    the background. Polls the job until DONE/FAILED."""
+    import time
+
     try:
         files = {"file": (file.name, file.getvalue(), file.type)}
-        response = requests.post(f"{API}/documents", files=files, timeout=300)
-        if response.status_code == 200:
-            payload = response.json()
+        response = requests.post(f"{API}/documents", files=files, timeout=60)
+        if response.status_code != 202:
+            detail = {}
+            try:
+                detail = response.json()
+            except Exception:
+                pass
             return {
-                "ok": True,
-                "message": f"Indexed {payload.get('chunk_count', 0)} chunks from {payload.get('filename')}",
-                "data": payload,
+                "ok": False,
+                "message": detail.get("detail", f"Upload failed ({response.status_code})"),
+                "data": None,
             }
-        detail = {}
-        try:
-            detail = response.json()
-        except Exception:
-            pass
-        return {
-            "ok": False,
-            "message": detail.get("detail", f"Upload failed ({response.status_code})"),
-            "data": None,
-        }
+
+        job = response.json()
+        job_id = job["job_id"]
+        deadline = time.time() + timeout_seconds
+        while time.time() < deadline:
+            status = requests.get(f"{API}/documents/jobs/{job_id}", timeout=30).json()
+            if status["status"] == "DONE":
+                doc_id = status.get("document_id")
+                chunk_count = 0
+                if doc_id:
+                    doc = requests.get(f"{API}/documents/{doc_id}/status", timeout=30).json()
+                    chunk_count = doc.get("chunk_count", 0)
+                return {
+                    "ok": True,
+                    "message": f"Indexed {chunk_count} chunks from {status['filename']}",
+                    "data": status,
+                }
+            if status["status"] == "FAILED":
+                return {"ok": False, "message": status.get("error", "Ingestion failed"), "data": status}
+            time.sleep(1.5)
+        return {"ok": False, "message": "Ingestion timed out", "data": job}
     except Exception as e:
         return {"ok": False, "message": f"Upload error: {e}", "data": None}
 

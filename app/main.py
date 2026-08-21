@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.dependencies import build_context, load_sparse
-from app.api.routes import chat, documents, sessions
+from app.api.routes import admin, chat, documents, sessions
 from app.core.config import get_settings
 from app.core.exceptions import LightRAGError
 from app.core.logging import configure_logging, get_logger
@@ -21,6 +21,20 @@ async def lifespan(app: FastAPI):
 
     await init_db(ctx.engine)
     await load_sparse(ctx)
+
+    from app.core.security import hash_key
+    from app.db.repositories import ApiKeyRepository, CollectionRepository
+
+    async with ctx.sessionmaker() as session:
+        await CollectionRepository(session).ensure_default()
+        if settings.admin_api_key:
+            await ApiKeyRepository(session).create(
+                name="bootstrap-admin",
+                key_hash=hash_key(settings.admin_api_key),
+                is_admin=True,
+            )
+            log.info("admin API key provisioned from ADMIN_API_KEY")
+
     app.state.ctx = ctx
     log.info(
         "%s started | llm=%s | db=%s",
@@ -29,6 +43,7 @@ async def lifespan(app: FastAPI):
         settings.database_url.split("://")[0],
     )
     yield
+    ctx.job_worker.aclose()
     await ctx.engine.dispose()
 
 
@@ -57,6 +72,7 @@ def create_app() -> FastAPI:
     app.include_router(chat.router, prefix="/api/v1")
     app.include_router(documents.router, prefix="/api/v1")
     app.include_router(sessions.router, prefix="/api/v1")
+    app.include_router(admin.router, prefix="/api/v1")
 
     @app.get("/")
     async def root():

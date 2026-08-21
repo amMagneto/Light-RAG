@@ -12,7 +12,10 @@ class Settings(BaseSettings):
 
     database_url: str = "sqlite+aiosqlite:///./rag_app.db"
 
+    admin_api_key: str | None = None
+
     groq_api_key: str | None = None
+    llm_provider: str = "groq"
     llm_model: str = "openai/gpt-oss-120b"
     llm_temperature: float = 0.0
     llm_rpm_limit: int = 25
@@ -37,6 +40,9 @@ class Settings(BaseSettings):
     strong_relevance: float = 0.55
     min_lexical_for_top_rank: float = 0.22
     max_refinement_attempts: int = 2
+
+    parent_expansion: bool = True
+    parent_max_chars: int = 2400
 
     memory_recall_k: int = 3
     enable_memory_extraction: bool = True
