@@ -3,18 +3,10 @@ import shutil
 from pathlib import Path
 from fastapi import FastAPI, UploadFile, File
 
-try:
-    # Package-style imports (e.g. uvicorn backend.main:app)
-    from .schemas import ChatRequest, ChatResponse
-    from .db_utils import create_application_logs, insert_application_logs, get_chat_history
-    from .langchain_utils import get_conversational_rag_chain
-    from .chroma_utils import build_vector_store, load_and_chunk_document
-except ImportError:
-    # Local-module imports (e.g. from backend dir: uvicorn main:app)
-    from schemas import ChatRequest, ChatResponse
-    from db_utils import create_application_logs, insert_application_logs, get_chat_history
-    from langchain_utils import get_conversational_rag_chain
-    from chroma_utils import build_vector_store, load_and_chunk_document
+from backend.schemas import ChatRequest, ChatResponse
+from backend.db_utils import create_application_logs, insert_application_logs, get_chat_history
+from backend.langchain_utils import get_conversational_rag_chain
+from backend.chroma_utils import build_vector_store, load_and_chunk_document
 
 app = FastAPI()
 

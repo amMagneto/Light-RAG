@@ -1,5 +1,9 @@
 # Light-RAG: Build Vision & Requirements
 
+> **Historical document.** This was the original wishlist that motivated the platform rebuild.
+> For what actually shipped and where, see [`status.md`](status.md).
+> For the reasoning behind every architectural choice, see [`architecture.md`](architecture.md).
+
 ## 1. Reframe the Narrative — The README Itself
 The current README reads like a setup guide. An S-tier project README sells a vision and proves technical depth simultaneously.
 Structure it like this:

@@ -11,3 +11,10 @@ uvicorn
 streamlit
 python-dotenv
 python-multipart
+pydantic-settings
+sqlalchemy[asyncio]
+aiosqlite
+asyncpg
+rank-bm25
+httpx
+requests
