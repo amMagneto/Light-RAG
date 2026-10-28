@@ -7,4 +7,5 @@ chroma_db/
 chroma_store/
 storage/
 rag_app.db
+backend/docs/
 uvicorn_*.txt
