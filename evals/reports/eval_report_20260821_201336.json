@@ -1,0 +1,4739 @@
+{
+ "timestamp": "2026-08-21T20:13:36.063559",
+ "questions": 27,
+ "corpus_chunks": 16,
+ "max_k": 8,
+ "overall": {
+  "dense": {
+   "judged_queries": 24,
+   "missed_queries": 3,
+   "recall@1": 0.9792,
+   "precision@1": 1.0,
+   "hit_rate@1": 0.8889,
+   "recall@3": 1.0,
+   "precision@3": 0.3472,
+   "hit_rate@3": 0.8889,
+   "recall@5": 1.0,
+   "precision@5": 0.2083,
+   "hit_rate@5": 0.8889,
+   "recall@8": 1.0,
+   "precision@8": 0.1302,
+   "hit_rate@8": 0.8889,
+   "mrr": 1.0
+  },
+  "sparse": {
+   "judged_queries": 23,
+   "missed_queries": 4,
+   "recall@1": 0.8913,
+   "precision@1": 0.913,
+   "hit_rate@1": 0.7778,
+   "recall@3": 1.0,
+   "precision@3": 0.3478,
+   "hit_rate@3": 0.8519,
+   "recall@5": 1.0,
+   "precision@5": 0.2087,
+   "hit_rate@5": 0.8519,
+   "recall@8": 1.0,
+   "precision@8": 0.1304,
+   "hit_rate@8": 0.8519,
+   "mrr": 0.9565
+  },
+  "fused": {
+   "judged_queries": 24,
+   "missed_queries": 3,
+   "recall@1": 0.9375,
+   "precision@1": 0.9583,
+   "hit_rate@1": 0.8519,
+   "recall@3": 1.0,
+   "precision@3": 0.3472,
+   "hit_rate@3": 0.8889,
+   "recall@5": 1.0,
+   "precision@5": 0.2083,
+   "hit_rate@5": 0.8889,
+   "recall@8": 1.0,
+   "precision@8": 0.1302,
+   "hit_rate@8": 0.8889,
+   "mrr": 0.9792
+  },
+  "full": {
+   "judged_queries": 24,
+   "missed_queries": 3,
+   "recall@1": 0.9375,
+   "precision@1": 0.9583,
+   "hit_rate@1": 0.8519,
+   "recall@3": 1.0,
+   "precision@3": 0.3472,
+   "hit_rate@3": 0.8889,
+   "recall@5": 1.0,
+   "precision@5": 0.2083,
+   "hit_rate@5": 0.8889,
+   "recall@8": 1.0,
+   "precision@8": 0.1302,
+   "hit_rate@8": 0.8889,
+   "mrr": 0.9792
+  }
+ },
+ "per_category": {
+  "exact_term": {
+   "dense": {
+    "judged_queries": 4,
+    "missed_queries": 0,
+    "recall@1": 1.0,
+    "precision@1": 1.0,
+    "hit_rate@1": 1.0,
+    "recall@3": 1.0,
+    "precision@3": 0.3333,
+    "hit_rate@3": 1.0,
+    "recall@5": 1.0,
+    "precision@5": 0.2,
+    "hit_rate@5": 1.0,
+    "recall@8": 1.0,
+    "precision@8": 0.125,
+    "hit_rate@8": 1.0,
+    "mrr": 1.0
+   },
+   "sparse": {
+    "judged_queries": 4,
+    "missed_queries": 0,
+    "recall@1": 1.0,
+    "precision@1": 1.0,
+    "hit_rate@1": 1.0,
+    "recall@3": 1.0,
+    "precision@3": 0.3333,
+    "hit_rate@3": 1.0,
+    "recall@5": 1.0,
+    "precision@5": 0.2,
+    "hit_rate@5": 1.0,
+    "recall@8": 1.0,
+    "precision@8": 0.125,
+    "hit_rate@8": 1.0,
+    "mrr": 1.0
+   },
+   "fused": {
+    "judged_queries": 4,
+    "missed_queries": 0,
+    "recall@1": 1.0,
+    "precision@1": 1.0,
+    "hit_rate@1": 1.0,
+    "recall@3": 1.0,
+    "precision@3": 0.3333,
+    "hit_rate@3": 1.0,
+    "recall@5": 1.0,
+    "precision@5": 0.2,
+    "hit_rate@5": 1.0,
+    "recall@8": 1.0,
+    "precision@8": 0.125,
+    "hit_rate@8": 1.0,
+    "mrr": 1.0
+   },
+   "full": {
+    "judged_queries": 4,
+    "missed_queries": 0,
+    "recall@1": 1.0,
+    "precision@1": 1.0,
+    "hit_rate@1": 1.0,
+    "recall@3": 1.0,
+    "precision@3": 0.3333,
+    "hit_rate@3": 1.0,
+    "recall@5": 1.0,
+    "precision@5": 0.2,
+    "hit_rate@5": 1.0,
+    "recall@8": 1.0,
+    "precision@8": 0.125,
+    "hit_rate@8": 1.0,
+    "mrr": 1.0
+   }
+  },
+  "numeric": {
+   "dense": {
+    "judged_queries": 7,
+    "missed_queries": 0,
+    "recall@1": 1.0,
+    "precision@1": 1.0,
+    "hit_rate@1": 1.0,
+    "recall@3": 1.0,
+    "precision@3": 0.3333,
+    "hit_rate@3": 1.0,
+    "recall@5": 1.0,
+    "precision@5": 0.2,
+    "hit_rate@5": 1.0,
+    "recall@8": 1.0,
+    "precision@8": 0.125,
+    "hit_rate@8": 1.0,
+    "mrr": 1.0
+   },
+   "sparse": {
+    "judged_queries": 7,
+    "missed_queries": 0,
+    "recall@1": 1.0,
+    "precision@1": 1.0,
+    "hit_rate@1": 1.0,
+    "recall@3": 1.0,
+    "precision@3": 0.3333,
+    "hit_rate@3": 1.0,
+    "recall@5": 1.0,
+    "precision@5": 0.2,
+    "hit_rate@5": 1.0,
+    "recall@8": 1.0,
+    "precision@8": 0.125,
+    "hit_rate@8": 1.0,
+    "mrr": 1.0
+   },
+   "fused": {
+    "judged_queries": 7,
+    "missed_queries": 0,
+    "recall@1": 1.0,
+    "precision@1": 1.0,
+    "hit_rate@1": 1.0,
+    "recall@3": 1.0,
+    "precision@3": 0.3333,
+    "hit_rate@3": 1.0,
+    "recall@5": 1.0,
+    "precision@5": 0.2,
+    "hit_rate@5": 1.0,
+    "recall@8": 1.0,
+    "precision@8": 0.125,
+    "hit_rate@8": 1.0,
+    "mrr": 1.0
+   },
+   "full": {
+    "judged_queries": 7,
+    "missed_queries": 0,
+    "recall@1": 1.0,
+    "precision@1": 1.0,
+    "hit_rate@1": 1.0,
+    "recall@3": 1.0,
+    "precision@3": 0.3333,
+    "hit_rate@3": 1.0,
+    "recall@5": 1.0,
+    "precision@5": 0.2,
+    "hit_rate@5": 1.0,
+    "recall@8": 1.0,
+    "precision@8": 0.125,
+    "hit_rate@8": 1.0,
+    "mrr": 1.0
+   }
+  },
+  "paraphrase": {
+   "dense": {
+    "judged_queries": 5,
+    "missed_queries": 0,
+    "recall@1": 1.0,
+    "precision@1": 1.0,
+    "hit_rate@1": 1.0,
+    "recall@3": 1.0,
+    "precision@3": 0.3333,
+    "hit_rate@3": 1.0,
+    "recall@5": 1.0,
+    "precision@5": 0.2,
+    "hit_rate@5": 1.0,
+    "recall@8": 1.0,
+    "precision@8": 0.125,
+    "hit_rate@8": 1.0,
+    "mrr": 1.0
+   },
+   "sparse": {
+    "judged_queries": 4,
+    "missed_queries": 1,
+    "recall@1": 0.75,
+    "precision@1": 0.75,
+    "hit_rate@1": 0.6,
+    "recall@3": 1.0,
+    "precision@3": 0.3333,
+    "hit_rate@3": 0.8,
+    "recall@5": 1.0,
+    "precision@5": 0.2,
+    "hit_rate@5": 0.8,
+    "recall@8": 1.0,
+    "precision@8": 0.125,
+    "hit_rate@8": 0.8,
+    "mrr": 0.875
+   },
+   "fused": {
+    "judged_queries": 5,
+    "missed_queries": 0,
+    "recall@1": 0.8,
+    "precision@1": 0.8,
+    "hit_rate@1": 0.8,
+    "recall@3": 1.0,
+    "precision@3": 0.3333,
+    "hit_rate@3": 1.0,
+    "recall@5": 1.0,
+    "precision@5": 0.2,
+    "hit_rate@5": 1.0,
+    "recall@8": 1.0,
+    "precision@8": 0.125,
+    "hit_rate@8": 1.0,
+    "mrr": 0.9
+   },
+   "full": {
+    "judged_queries": 5,
+    "missed_queries": 0,
+    "recall@1": 0.8,
+    "precision@1": 0.8,
+    "hit_rate@1": 0.8,
+    "recall@3": 1.0,
+    "precision@3": 0.3333,
+    "hit_rate@3": 1.0,
+    "recall@5": 1.0,
+    "precision@5": 0.2,
+    "hit_rate@5": 1.0,
+    "recall@8": 1.0,
+    "precision@8": 0.125,
+    "hit_rate@8": 1.0,
+    "mrr": 0.9
+   }
+  },
+  "procedural": {
+   "dense": {
+    "judged_queries": 3,
+    "missed_queries": 0,
+    "recall@1": 1.0,
+    "precision@1": 1.0,
+    "hit_rate@1": 1.0,
+    "recall@3": 1.0,
+    "precision@3": 0.3333,
+    "hit_rate@3": 1.0,
+    "recall@5": 1.0,
+    "precision@5": 0.2,
+    "hit_rate@5": 1.0,
+    "recall@8": 1.0,
+    "precision@8": 0.125,
+    "hit_rate@8": 1.0,
+    "mrr": 1.0
+   },
+   "sparse": {
+    "judged_queries": 3,
+    "missed_queries": 0,
+    "recall@1": 1.0,
+    "precision@1": 1.0,
+    "hit_rate@1": 1.0,
+    "recall@3": 1.0,
+    "precision@3": 0.3333,
+    "hit_rate@3": 1.0,
+    "recall@5": 1.0,
+    "precision@5": 0.2,
+    "hit_rate@5": 1.0,
+    "recall@8": 1.0,
+    "precision@8": 0.125,
+    "hit_rate@8": 1.0,
+    "mrr": 1.0
+   },
+   "fused": {
+    "judged_queries": 3,
+    "missed_queries": 0,
+    "recall@1": 1.0,
+    "precision@1": 1.0,
+    "hit_rate@1": 1.0,
+    "recall@3": 1.0,
+    "precision@3": 0.3333,
+    "hit_rate@3": 1.0,
+    "recall@5": 1.0,
+    "precision@5": 0.2,
+    "hit_rate@5": 1.0,
+    "recall@8": 1.0,
+    "precision@8": 0.125,
+    "hit_rate@8": 1.0,
+    "mrr": 1.0
+   },
+   "full": {
+    "judged_queries": 3,
+    "missed_queries": 0,
+    "recall@1": 1.0,
+    "precision@1": 1.0,
+    "hit_rate@1": 1.0,
+    "recall@3": 1.0,
+    "precision@3": 0.3333,
+    "hit_rate@3": 1.0,
+    "recall@5": 1.0,
+    "precision@5": 0.2,
+    "hit_rate@5": 1.0,
+    "recall@8": 1.0,
+    "precision@8": 0.125,
+    "hit_rate@8": 1.0,
+    "mrr": 1.0
+   }
+  },
+  "comparative": {
+   "dense": {
+    "judged_queries": 3,
+    "missed_queries": 0,
+    "recall@1": 0.8333,
+    "precision@1": 1.0,
+    "hit_rate@1": 1.0,
+    "recall@3": 1.0,
+    "precision@3": 0.4444,
+    "hit_rate@3": 1.0,
+    "recall@5": 1.0,
+    "precision@5": 0.2667,
+    "hit_rate@5": 1.0,
+    "recall@8": 1.0,
+    "precision@8": 0.1667,
+    "hit_rate@8": 1.0,
+    "mrr": 1.0
+   },
+   "sparse": {
+    "judged_queries": 3,
+    "missed_queries": 0,
+    "recall@1": 0.5,
+    "precision@1": 0.6667,
+    "hit_rate@1": 0.6667,
+    "recall@3": 1.0,
+    "precision@3": 0.4444,
+    "hit_rate@3": 1.0,
+    "recall@5": 1.0,
+    "precision@5": 0.2667,
+    "hit_rate@5": 1.0,
+    "recall@8": 1.0,
+    "precision@8": 0.1667,
+    "hit_rate@8": 1.0,
+    "mrr": 0.8333
+   },
+   "fused": {
+    "judged_queries": 3,
+    "missed_queries": 0,
+    "recall@1": 0.8333,
+    "precision@1": 1.0,
+    "hit_rate@1": 1.0,
+    "recall@3": 1.0,
+    "precision@3": 0.4444,
+    "hit_rate@3": 1.0,
+    "recall@5": 1.0,
+    "precision@5": 0.2667,
+    "hit_rate@5": 1.0,
+    "recall@8": 1.0,
+    "precision@8": 0.1667,
+    "hit_rate@8": 1.0,
+    "mrr": 1.0
+   },
+   "full": {
+    "judged_queries": 3,
+    "missed_queries": 0,
+    "recall@1": 0.8333,
+    "precision@1": 1.0,
+    "hit_rate@1": 1.0,
+    "recall@3": 1.0,
+    "precision@3": 0.4444,
+    "hit_rate@3": 1.0,
+    "recall@5": 1.0,
+    "precision@5": 0.2667,
+    "hit_rate@5": 1.0,
+    "recall@8": 1.0,
+    "precision@8": 0.1667,
+    "hit_rate@8": 1.0,
+    "mrr": 1.0
+   }
+  },
+  "multi_constraint": {
+   "dense": {
+    "judged_queries": 2,
+    "missed_queries": 0,
+    "recall@1": 1.0,
+    "precision@1": 1.0,
+    "hit_rate@1": 1.0,
+    "recall@3": 1.0,
+    "precision@3": 0.3333,
+    "hit_rate@3": 1.0,
+    "recall@5": 1.0,
+    "precision@5": 0.2,
+    "hit_rate@5": 1.0,
+    "recall@8": 1.0,
+    "precision@8": 0.125,
+    "hit_rate@8": 1.0,
+    "mrr": 1.0
+   },
+   "sparse": {
+    "judged_queries": 2,
+    "missed_queries": 0,
+    "recall@1": 1.0,
+    "precision@1": 1.0,
+    "hit_rate@1": 1.0,
+    "recall@3": 1.0,
+    "precision@3": 0.3333,
+    "hit_rate@3": 1.0,
+    "recall@5": 1.0,
+    "precision@5": 0.2,
+    "hit_rate@5": 1.0,
+    "recall@8": 1.0,
+    "precision@8": 0.125,
+    "hit_rate@8": 1.0,
+    "mrr": 1.0
+   },
+   "fused": {
+    "judged_queries": 2,
+    "missed_queries": 0,
+    "recall@1": 1.0,
+    "precision@1": 1.0,
+    "hit_rate@1": 1.0,
+    "recall@3": 1.0,
+    "precision@3": 0.3333,
+    "hit_rate@3": 1.0,
+    "recall@5": 1.0,
+    "precision@5": 0.2,
+    "hit_rate@5": 1.0,
+    "recall@8": 1.0,
+    "precision@8": 0.125,
+    "hit_rate@8": 1.0,
+    "mrr": 1.0
+   },
+   "full": {
+    "judged_queries": 2,
+    "missed_queries": 0,
+    "recall@1": 1.0,
+    "precision@1": 1.0,
+    "hit_rate@1": 1.0,
+    "recall@3": 1.0,
+    "precision@3": 0.3333,
+    "hit_rate@3": 1.0,
+    "recall@5": 1.0,
+    "precision@5": 0.2,
+    "hit_rate@5": 1.0,
+    "recall@8": 1.0,
+    "precision@8": 0.125,
+    "hit_rate@8": 1.0,
+    "mrr": 1.0
+   }
+  },
+  "unanswerable": {
+   "dense": {
+    "judged_queries": 0,
+    "missed_queries": 3,
+    "hit_rate@1": 0.0,
+    "hit_rate@3": 0.0,
+    "hit_rate@5": 0.0,
+    "hit_rate@8": 0.0,
+    "mrr": 0.0
+   },
+   "sparse": {
+    "judged_queries": 0,
+    "missed_queries": 3,
+    "hit_rate@1": 0.0,
+    "hit_rate@3": 0.0,
+    "hit_rate@5": 0.0,
+    "hit_rate@8": 0.0,
+    "mrr": 0.0
+   },
+   "fused": {
+    "judged_queries": 0,
+    "missed_queries": 3,
+    "hit_rate@1": 0.0,
+    "hit_rate@3": 0.0,
+    "hit_rate@5": 0.0,
+    "hit_rate@8": 0.0,
+    "mrr": 0.0
+   },
+   "full": {
+    "judged_queries": 0,
+    "missed_queries": 3,
+    "hit_rate@1": 0.0,
+    "hit_rate@3": 0.0,
+    "hit_rate@5": 0.0,
+    "hit_rate@8": 0.0,
+    "mrr": 0.0
+   }
+  }
+ },
+ "verdicts": {
+  "trap_total": 3,
+  "trap_correct_lenient": 3,
+  "trap_accuracy_lenient": 1.0,
+  "answerable_with_evidence": 24,
+  "answerable_sufficient": 20,
+  "answerable_verdict_accuracy_conditional": 0.8333
+ },
+ "context": {
+  "dedup_ratio": 1.0,
+  "relevant_fraction_of_context": 0.1157
+ },
+ "latency_ms_avg": {
+  "dense_ms": 141.17,
+  "sparse_ms": 1.0,
+  "fusion_ms": 0.94
+ },
+ "hypotheses": {
+  "H1_exact_term_sparse_wins": {
+   "statement": "MRR(sparse) >= MRR(dense) on exact_term queries",
+   "mrr_dense": 1.0,
+   "mrr_sparse": 1.0,
+   "pass": true
+  },
+  "H2_paraphrase_dense_wins": {
+   "statement": "MRR(dense) > MRR(sparse) on paraphrase queries",
+   "mrr_dense": 1.0,
+   "mrr_sparse": 0.875,
+   "pass": true
+  },
+  "H3_fusion_never_loses_recall": {
+   "statement": "recall@8(fused) >= max(recall@8 legs) - 0.02",
+   "recall_dense": 1.0,
+   "recall_sparse": 1.0,
+   "recall_fused": 1.0,
+   "pass": true
+  },
+  "H4_reranker_trades_cleanly": {
+   "statement": "precision@3(full) >= precision@3(fused) - 0.02 AND recall@8(full) >= recall@8(fused) - 0.05",
+   "precision3_fused": 0.3472,
+   "precision3_full": 0.3472,
+   "recall8_fused": 1.0,
+   "recall8_full": 1.0,
+   "pass": true
+  }
+ },
+ "detail": {
+  "q01": {
+   "category": "exact_term",
+   "ground_truth_size": 1,
+   "dense": [
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ],
+   "sparse": [
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ],
+   "fused": [
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    }
+   ],
+   "full": [
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    }
+   ]
+  },
+  "q02": {
+   "category": "exact_term",
+   "ground_truth_size": 1,
+   "dense": [
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    }
+   ],
+   "sparse": [
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    }
+   ],
+   "fused": [
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ],
+   "full": [
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ]
+  },
+  "q03": {
+   "category": "exact_term",
+   "ground_truth_size": 1,
+   "dense": [
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ],
+   "sparse": [
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    }
+   ],
+   "fused": [
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ],
+   "full": [
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ]
+  },
+  "q04": {
+   "category": "exact_term",
+   "ground_truth_size": 1,
+   "dense": [
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    }
+   ],
+   "sparse": [
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ],
+   "fused": [
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ],
+   "full": [
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ]
+  },
+  "q05": {
+   "category": "numeric",
+   "ground_truth_size": 1,
+   "dense": [
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "9f499318",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "c93bac3a",
+     "doc": "product_faq.md",
+     "rel": false
+    }
+   ],
+   "sparse": [
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "9f499318",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    }
+   ],
+   "fused": [
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "9f499318",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "c93bac3a",
+     "doc": "product_faq.md",
+     "rel": false
+    }
+   ],
+   "full": [
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "9f499318",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "c93bac3a",
+     "doc": "product_faq.md",
+     "rel": false
+    }
+   ]
+  },
+  "q06": {
+   "category": "numeric",
+   "ground_truth_size": 1,
+   "dense": [
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ],
+   "sparse": [
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "9f499318",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "c93bac3a",
+     "doc": "product_faq.md",
+     "rel": false
+    }
+   ],
+   "fused": [
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "9f499318",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    }
+   ],
+   "full": [
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "9f499318",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "c93bac3a",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    }
+   ]
+  },
+  "q07": {
+   "category": "numeric",
+   "ground_truth_size": 1,
+   "dense": [
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ],
+   "sparse": [
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": true
+    }
+   ],
+   "fused": [
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ],
+   "full": [
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ]
+  },
+  "q08": {
+   "category": "numeric",
+   "ground_truth_size": 1,
+   "dense": [
+    {
+     "chunk_id": "9f499318",
+     "doc": "product_faq.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "c93bac3a",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    }
+   ],
+   "sparse": [
+    {
+     "chunk_id": "9f499318",
+     "doc": "product_faq.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    }
+   ],
+   "fused": [
+    {
+     "chunk_id": "9f499318",
+     "doc": "product_faq.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "c93bac3a",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    }
+   ],
+   "full": [
+    {
+     "chunk_id": "9f499318",
+     "doc": "product_faq.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "c93bac3a",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    }
+   ]
+  },
+  "q09": {
+   "category": "numeric",
+   "ground_truth_size": 1,
+   "dense": [
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "9f499318",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ],
+   "sparse": [
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "9f499318",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    }
+   ],
+   "fused": [
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "9f499318",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ],
+   "full": [
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "9f499318",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ]
+  },
+  "q10": {
+   "category": "numeric",
+   "ground_truth_size": 1,
+   "dense": [
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "c93bac3a",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ],
+   "sparse": [
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ],
+   "fused": [
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "c93bac3a",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ],
+   "full": [
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "c93bac3a",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ]
+  },
+  "q11": {
+   "category": "numeric",
+   "ground_truth_size": 1,
+   "dense": [
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ],
+   "sparse": [
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ],
+   "fused": [
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ],
+   "full": [
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ]
+  },
+  "q12": {
+   "category": "paraphrase",
+   "ground_truth_size": 1,
+   "dense": [
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ],
+   "sparse": [
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    }
+   ],
+   "fused": [
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ],
+   "full": [
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ]
+  },
+  "q13": {
+   "category": "paraphrase",
+   "ground_truth_size": 1,
+   "dense": [
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ],
+   "sparse": [
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": true
+    }
+   ],
+   "fused": [
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ],
+   "full": [
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ]
+  },
+  "q14": {
+   "category": "paraphrase",
+   "ground_truth_size": 1,
+   "dense": [
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "c93bac3a",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    }
+   ],
+   "sparse": [
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "c93bac3a",
+     "doc": "product_faq.md",
+     "rel": false
+    }
+   ],
+   "fused": [
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "c93bac3a",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    }
+   ],
+   "full": [
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "c93bac3a",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    }
+   ]
+  },
+  "q15": {
+   "category": "paraphrase",
+   "ground_truth_size": 1,
+   "dense": [
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ],
+   "sparse": [
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "9f499318",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    }
+   ],
+   "fused": [
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "9f499318",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    }
+   ],
+   "full": [
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "9f499318",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    }
+   ]
+  },
+  "q16": {
+   "category": "paraphrase",
+   "ground_truth_size": 1,
+   "dense": [
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "c93bac3a",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ],
+   "sparse": [
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ],
+   "fused": [
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "c93bac3a",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    }
+   ],
+   "full": [
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "c93bac3a",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    }
+   ]
+  },
+  "q17": {
+   "category": "procedural",
+   "ground_truth_size": 1,
+   "dense": [
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ],
+   "sparse": [
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ],
+   "fused": [
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ],
+   "full": [
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    }
+   ]
+  },
+  "q18": {
+   "category": "procedural",
+   "ground_truth_size": 1,
+   "dense": [
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ],
+   "sparse": [
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ],
+   "fused": [
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ],
+   "full": [
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ]
+  },
+  "q19": {
+   "category": "procedural",
+   "ground_truth_size": 1,
+   "dense": [
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ],
+   "sparse": [
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    }
+   ],
+   "fused": [
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ],
+   "full": [
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ]
+  },
+  "q20": {
+   "category": "comparative",
+   "ground_truth_size": 1,
+   "dense": [
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "9f499318",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "c93bac3a",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    }
+   ],
+   "sparse": [
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "9f499318",
+     "doc": "product_faq.md",
+     "rel": false
+    }
+   ],
+   "fused": [
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "9f499318",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "c93bac3a",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    }
+   ],
+   "full": [
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "9f499318",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "c93bac3a",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    }
+   ]
+  },
+  "q21": {
+   "category": "comparative",
+   "ground_truth_size": 2,
+   "dense": [
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ],
+   "sparse": [
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ],
+   "fused": [
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ],
+   "full": [
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ]
+  },
+  "q22": {
+   "category": "comparative",
+   "ground_truth_size": 1,
+   "dense": [
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    }
+   ],
+   "sparse": [
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    }
+   ],
+   "fused": [
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    }
+   ],
+   "full": [
+    {
+     "chunk_id": "a7f1d05c",
+     "doc": "engineering_runbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "8ce49044",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    }
+   ]
+  },
+  "q23": {
+   "category": "multi_constraint",
+   "ground_truth_size": 1,
+   "dense": [
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    }
+   ],
+   "sparse": [
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": false
+    }
+   ],
+   "fused": [
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    }
+   ],
+   "full": [
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    }
+   ]
+  },
+  "q24": {
+   "category": "multi_constraint",
+   "ground_truth_size": 1,
+   "dense": [
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ],
+   "sparse": [
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": false
+    }
+   ],
+   "fused": [
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ],
+   "full": [
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": true
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ]
+  },
+  "q25": {
+   "category": "unanswerable",
+   "ground_truth_size": 0,
+   "dense": [
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ],
+   "sparse": [
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ],
+   "fused": [
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ],
+   "full": [
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ]
+  },
+  "q26": {
+   "category": "unanswerable",
+   "ground_truth_size": 0,
+   "dense": [
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ],
+   "sparse": [
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    }
+   ],
+   "fused": [
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ],
+   "full": [
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "84bed911",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "fe816160",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "a20a5063",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d9e31515",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    }
+   ]
+  },
+  "q27": {
+   "category": "unanswerable",
+   "ground_truth_size": 0,
+   "dense": [
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ],
+   "sparse": [
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    }
+   ],
+   "fused": [
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ],
+   "full": [
+    {
+     "chunk_id": "d444e550",
+     "doc": "hr_handbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "41f02ead",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1d95c749",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "cdfacbdf",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "f4a3f665",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "b9ef43da",
+     "doc": "security_policy.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "1ab76bd0",
+     "doc": "product_faq.md",
+     "rel": false
+    },
+    {
+     "chunk_id": "e504f192",
+     "doc": "engineering_runbook.md",
+     "rel": false
+    }
+   ]
+  }
+ },
+ "verdict_records": [
+  {
+   "id": "q01",
+   "answerable": true,
+   "verdict": "sufficient",
+   "recall_at_k": 1.0,
+   "rationale": "1 relevant chunk(s), best at rank 1."
+  },
+  {
+   "id": "q02",
+   "answerable": true,
+   "verdict": "sufficient",
+   "recall_at_k": 1.0,
+   "rationale": "1 relevant chunk(s), best at rank 1."
+  },
+  {
+   "id": "q03",
+   "answerable": true,
+   "verdict": "sufficient",
+   "recall_at_k": 1.0,
+   "rationale": "1 relevant chunk(s), best at rank 1."
+  },
+  {
+   "id": "q04",
+   "answerable": true,
+   "verdict": "sufficient",
+   "recall_at_k": 1.0,
+   "rationale": "1 relevant chunk(s), best at rank 1."
+  },
+  {
+   "id": "q05",
+   "answerable": true,
+   "verdict": "sufficient",
+   "recall_at_k": 1.0,
+   "rationale": "3 relevant chunk(s), best at rank 1."
+  },
+  {
+   "id": "q06",
+   "answerable": true,
+   "verdict": "sufficient",
+   "recall_at_k": 1.0,
+   "rationale": "3 relevant chunk(s), best at rank 1."
+  },
+  {
+   "id": "q07",
+   "answerable": true,
+   "verdict": "sufficient",
+   "recall_at_k": 1.0,
+   "rationale": "1 relevant chunk(s), best at rank 1."
+  },
+  {
+   "id": "q08",
+   "answerable": true,
+   "verdict": "sufficient",
+   "recall_at_k": 1.0,
+   "rationale": "2 relevant chunk(s), best at rank 1."
+  },
+  {
+   "id": "q09",
+   "answerable": true,
+   "verdict": "sufficient",
+   "recall_at_k": 1.0,
+   "rationale": "2 relevant chunk(s), best at rank 1."
+  },
+  {
+   "id": "q10",
+   "answerable": true,
+   "verdict": "sufficient",
+   "recall_at_k": 1.0,
+   "rationale": "1 relevant chunk(s), best at rank 1."
+  },
+  {
+   "id": "q11",
+   "answerable": true,
+   "verdict": "sufficient",
+   "recall_at_k": 1.0,
+   "rationale": "1 relevant chunk(s), best at rank 1."
+  },
+  {
+   "id": "q12",
+   "answerable": true,
+   "verdict": "sufficient",
+   "recall_at_k": 1.0,
+   "rationale": "1 relevant chunk(s), best at rank 1."
+  },
+  {
+   "id": "q13",
+   "answerable": true,
+   "verdict": "ambiguous",
+   "recall_at_k": 1.0,
+   "rationale": "Only weakly relevant evidence found."
+  },
+  {
+   "id": "q14",
+   "answerable": true,
+   "verdict": "ambiguous",
+   "recall_at_k": 1.0,
+   "rationale": "Only weakly relevant evidence found."
+  },
+  {
+   "id": "q15",
+   "answerable": true,
+   "verdict": "insufficient",
+   "recall_at_k": 1.0,
+   "rationale": "No chunk met the minimum relevance threshold."
+  },
+  {
+   "id": "q16",
+   "answerable": true,
+   "verdict": "sufficient",
+   "recall_at_k": 1.0,
+   "rationale": "1 relevant chunk(s), best at rank 1."
+  },
+  {
+   "id": "q17",
+   "answerable": true,
+   "verdict": "sufficient",
+   "recall_at_k": 1.0,
+   "rationale": "1 relevant chunk(s), best at rank 1."
+  },
+  {
+   "id": "q18",
+   "answerable": true,
+   "verdict": "sufficient",
+   "recall_at_k": 1.0,
+   "rationale": "1 relevant chunk(s), best at rank 1."
+  },
+  {
+   "id": "q19",
+   "answerable": true,
+   "verdict": "sufficient",
+   "recall_at_k": 1.0,
+   "rationale": "1 relevant chunk(s), best at rank 1."
+  },
+  {
+   "id": "q20",
+   "answerable": true,
+   "verdict": "sufficient",
+   "recall_at_k": 1.0,
+   "rationale": "2 relevant chunk(s), best at rank 1."
+  },
+  {
+   "id": "q21",
+   "answerable": true,
+   "verdict": "ambiguous",
+   "recall_at_k": 1.0,
+   "rationale": "Only weakly relevant evidence found."
+  },
+  {
+   "id": "q22",
+   "answerable": true,
+   "verdict": "sufficient",
+   "recall_at_k": 1.0,
+   "rationale": "1 relevant chunk(s), best at rank 1."
+  },
+  {
+   "id": "q23",
+   "answerable": true,
+   "verdict": "sufficient",
+   "recall_at_k": 1.0,
+   "rationale": "1 relevant chunk(s), best at rank 1."
+  },
+  {
+   "id": "q24",
+   "answerable": true,
+   "verdict": "sufficient",
+   "recall_at_k": 1.0,
+   "rationale": "1 relevant chunk(s), best at rank 1."
+  },
+  {
+   "id": "q25",
+   "answerable": false,
+   "verdict": "ambiguous",
+   "recall_at_k": null,
+   "rationale": "Only weakly relevant evidence found."
+  },
+  {
+   "id": "q26",
+   "answerable": false,
+   "verdict": "insufficient",
+   "recall_at_k": null,
+   "rationale": "No chunk met the minimum relevance threshold."
+  },
+  {
+   "id": "q27",
+   "answerable": false,
+   "verdict": "ambiguous",
+   "recall_at_k": null,
+   "rationale": "Only weakly relevant evidence found."
+  }
+ ]
+}

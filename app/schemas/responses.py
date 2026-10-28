@@ -1,8 +1,19 @@
+from typing import Literal
+
 from pydantic import BaseModel, Field
 
 from app.schemas.documents import DocumentMeta
 from app.schemas.generation import Citation, Claim
+from app.schemas.query import FailureCode
 from app.schemas.retrieval import RetrievalCandidate
+
+ConfidenceBand = Literal["high", "medium", "low", "unsupported"]
+
+
+class ConflictInfo(BaseModel):
+    detected: bool = True
+    note: str = ""
+    sources: list[Citation] = Field(default_factory=list)
 
 
 class TraceInfo(BaseModel):
@@ -26,6 +37,9 @@ class ChatResponse(BaseModel):
     citations: list[Citation] = Field(default_factory=list)
     claims: list[Claim] = Field(default_factory=list)
     confidence: float = 0.0
+    confidence_band: ConfidenceBand = "unsupported"
+    failure_code: FailureCode | None = None
+    conflict: ConflictInfo | None = None
     uncertainty: str | None = None
     trace: TraceInfo | None = None
     sources: list[SourceRef] = Field(default_factory=list)

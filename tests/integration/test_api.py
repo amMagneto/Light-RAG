@@ -4,7 +4,7 @@ from fastapi.testclient import TestClient
 
 from app.db.engine import init_db
 from app.main import app
-from conftest import make_ctx
+from conftest import make_ctx, upload_and_wait
 
 
 def _boot(tmp_path):
@@ -27,24 +27,17 @@ The cafeteria stops serving lunch at 14:00 sharp.
 
 
 def test_document_lifecycle_search_and_chat_guard(tmp_path):
-    _, client = _boot(tmp_path)
+    ctx, client = _boot(tmp_path)
 
-    response = client.post(
-        "/api/v1/documents",
-        files={"file": ("guide.md", GUIDE_MD, "text/markdown")},
-    )
-    assert response.status_code == 200, response.text
-    body = response.json()
-    assert body["status"] == "READY"
-    assert body["chunk_count"] >= 2
-    document_id = body["document_id"]
-
-    response = client.get("/api/v1/documents")
-    assert any(d["meta"]["id"] == document_id for d in response.json()["documents"])
+    uploaded = upload_and_wait(client, ctx, "guide.md", GUIDE_MD)
+    document_id = uploaded["document_id"]
 
     response = client.get(f"/api/v1/documents/{document_id}/status")
     assert response.status_code == 200
-    assert response.json()["meta"]["status"] == "READY"
+    body = response.json()
+    assert body["meta"]["status"] == "READY"
+    assert body["chunk_count"] >= 2
+    assert body["meta"]["version"] == 1
 
     response = client.post("/api/v1/search", json={"query": "ISO-27001 vendor certification", "top_k": 4})
     assert response.status_code == 200, response.text
@@ -54,17 +47,20 @@ def test_document_lifecycle_search_and_chat_guard(tmp_path):
     assert search["verdict"] in {"sufficient", "insufficient", "ambiguous"}
     assert search["trace"]["run_id"]
 
+    trace = client.get(f"/api/v1/traces/{search['trace']['run_id']}").json()
+    assert trace["query"] == "ISO-27001 vendor certification"
+    assert "stages_ms" in trace and trace["candidate_count"] >= 1
+
     response = client.post("/api/v1/chat", json={"query": "what do vendors need?"})
     assert response.status_code == 503
     assert "GROQ_API_KEY" in response.json()["detail"]
 
     response = client.delete(f"/api/v1/documents/{document_id}")
     assert response.status_code == 200
-    response = client.get(f"/api/v1/documents/{document_id}/status")
-    assert response.status_code == 404
+    assert client.get(f"/api/v1/documents/{document_id}/status").status_code == 404
 
 
-def test_unsupported_format_rejected(tmp_path):
+def test_unsupported_format_rejected_synchronously(tmp_path):
     _, client = _boot(tmp_path)
     response = client.post(
         "/api/v1/documents",

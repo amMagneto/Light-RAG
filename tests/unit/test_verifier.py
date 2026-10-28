@@ -1,4 +1,4 @@
-from app.reasoning.verifier import AnswerVerifier
+﻿from app.reasoning.verifier import AnswerVerifier
 from app.schemas.generation import Citation, Claim, GeneratedAnswer
 from app.schemas.retrieval import RetrievalVerdict
 
@@ -24,7 +24,7 @@ def test_claims_citing_missing_evidence_are_dropped():
         Claim(text="supported claim", citation_indices=[1], confidence=0.9),
         Claim(text="hallucinated citation", citation_indices=[99], confidence=0.9),
     ]
-    verified, confidence = verifier.verify(_generated(*claims), citations, RetrievalVerdict.SUFFICIENT)
+    verified, confidence, band = verifier.verify(_generated(*claims), citations, RetrievalVerdict.SUFFICIENT)
     assert len(verified.claims) == 1
     assert verified.claims[0].text == "supported claim"
     assert 0 < confidence < 1
@@ -36,8 +36,8 @@ def test_coverage_reduces_confidence():
     good = Claim(text="ok", citation_indices=[1], confidence=0.8)
     bad = Claim(text="bad", citation_indices=[7], confidence=0.8)
 
-    _, full = verifier.verify(_generated(good), citations, RetrievalVerdict.SUFFICIENT)
-    _, partial = verifier.verify(_generated(good, bad), citations, RetrievalVerdict.SUFFICIENT)
+    _, full, _ = verifier.verify(_generated(good), citations, RetrievalVerdict.SUFFICIENT)
+    _, partial, _ = verifier.verify(_generated(good, bad), citations, RetrievalVerdict.SUFFICIENT)
     assert partial < full
 
 
@@ -45,8 +45,8 @@ def test_verdict_penalty_applied():
     verifier = AnswerVerifier()
     citations = [_citation(1)]
     claims = [Claim(text="c", citation_indices=[1], confidence=0.9)]
-    _, sufficient = verifier.verify(_generated(*claims), citations, RetrievalVerdict.SUFFICIENT)
-    _, contradictory = verifier.verify(_generated(*claims), citations, RetrievalVerdict.CONTRADICTORY)
+    _, sufficient, _ = verifier.verify(_generated(*claims), citations, RetrievalVerdict.SUFFICIENT)
+    _, contradictory, _ = verifier.verify(_generated(*claims), citations, RetrievalVerdict.CONTRADICTORY)
     assert contradictory < sufficient * 0.6
 
 
@@ -62,5 +62,5 @@ def test_claims_without_citations_dropped_entirely():
     verifier = AnswerVerifier()
     citations = [_citation(1)]
     claims = [Claim(text="uncited", citation_indices=[])]
-    verified, _ = verifier.verify(_generated(*claims), citations, RetrievalVerdict.SUFFICIENT)
+    verified, _, band = verifier.verify(_generated(*claims), citations, RetrievalVerdict.SUFFICIENT)
     assert verified.claims == []

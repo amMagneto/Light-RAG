@@ -4,6 +4,7 @@ from pydantic import BaseModel, Field
 class Citation(BaseModel):
     index: int
     chunk_id: str
+    chunk_ids: list[str] = Field(default_factory=list)
     document_id: str
     document_name: str | None = None
     page_number: int | None = None

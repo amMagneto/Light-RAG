@@ -71,7 +71,7 @@ async def run_eval_async(
         assert result["status"] == "READY", f"injest failed for {filename}: {result}"
 
     async with ctx.sessionmaker() as session:
-        rows = await ChunkRepository(session).all_with_documents()
+        rows = await ChunkRepository(session).all_with_documents(current_only=True)
     all_chunks = [
         {
             "chunk_id": chunk.id,
@@ -79,7 +79,7 @@ async def run_eval_async(
             "content": chunk.content,
             "section_path": list(chunk.section_path_json or []),
         }
-        for chunk, filename in rows
+        for chunk, filename, _collection in rows
     ]
 
     def to_candidate(row: dict):

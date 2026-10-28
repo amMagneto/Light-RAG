@@ -93,3 +93,15 @@ Why the system is built the way it is. Each record: context → decision → con
 **Decision:** Every chat/search writes a `retrieval_runs` row: normalized query, intent, attempts, verdict, candidate count, confidence, model, and per-stage latency map. `/chat` and `/search` responses embed the same trace.
 
 **Consequences:** Stage-level attribution (e.g., planning 0.9 s vs grading 2.1 s from live runs) without log spelunking; the table doubles as the future metrics dashboard's data source.
+
+---
+
+## ADR-010: ACL scoping happens before retrieval, keyed on collections + hashed API keys
+
+**Status:** accepted
+
+**Context:** "Institutional knowledge" is multi-audience: HR documents must not surface to engineering queries and vice versa. Post-generation filtering is unacceptable — an unauthorized chunk that already entered the model context has leaked.
+
+**Decision:** Documents belong to collections; access is granted via API keys (`lrag_…`, sha256-hashed at rest) bound to collection sets. Two modes: **open** (zero keys exist — dev default, fully backward compatible) and **enforced** (≥1 key exists; valid key required or 401). Scoped retrieval passes an explicit `allowed_collection_ids` into the retrieval engine. The dense leg pre-filters inside Chroma (`where={"collection_id": {"$in": …}}`) so unauthorized vectors are never even scored; the sparse leg post-filters candidates before returning. Admin keys bypass scoping; key management endpoints exist only in open mode or to admins (this is also how the first key bootstraps).
+
+**Consequences:** Unauthorized *content* cannot enter fusion, reranking, context building, or generation from either leg. Honest tradeoff documented: BM25 scores are computed corpus-wide then filtered, so a scoped sparse search suffers rank-budget dilution (never content leakage); dense — the primary semantic leg — does true pre-filtering. Verified at both component level (`VectorIndex.query`, `SparseIndex.search`) and end-to-end (scoped key querying another team's exact terminology gets zero foreign documents in results).
