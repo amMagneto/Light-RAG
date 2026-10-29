@@ -1,8 +1,14 @@
 # Light-RAG — Vertical Retrieval Platform
 
+For Nerds
+
 A retrieval system whose final interface happens to be an LLM. Not a chatbot with a vector DB attached: generation is the **last stage** of a typed, inspectable pipeline.
 
 Every boundary is a Pydantic contract. Every query persists a trace. Every quality claim below is a measured number you can reproduce in under a minute.
+
+For Layman
+
+The project is Light-RAG, a self-hosted document Q&A / retrieval platform written in Python. It is not just a chatbot wrapper: the README describes it as a "vertical retrieval platform" where the LLM is the last stage of an inspectable pipeline. You upload documents, ask questions, and get answers with citations, confidence scores, and a per-stage performance trace.
 
 ![FastAPI](https://img.shields.io/badge/API-FastAPI-009688) ![Streamlit](https://img.shields.io/badge/UI-Streamlit-FF4B4B) ![ChromaDB](https://img.shields.io/badge/Vector%20store-ChromaDB-5A45FF) ![PostgreSQL](https://img.shields.io/badge/Storage-PostgreSQL%20%7C%20SQLite-4169E1)
 
