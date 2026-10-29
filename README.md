@@ -2,11 +2,10 @@
 
 ## Repository description
 
-**Recommended (251 characters, under GitHub's 350-character limit):**
 
 Light-RAG is a retrieval platform for auditable question answering over versioned document collections. It combines hybrid search, evidence grading, and claim-level citation verification, and returns citations plus a per-stage trace with every answer.
 
-**Capability-focused alternative (274 characters):**
+
 
 A typed, inspectable RAG pipeline for versioned document collections: hybrid dense and BM25 retrieval, RRF fusion, reranking, evidence grading, parent-child context expansion, and claim-level citation verification. Every answer includes citations and a stage-by-stage trace.
 
